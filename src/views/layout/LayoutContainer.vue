@@ -94,7 +94,7 @@ const handleCommand = async (key) => {
     <el-container>
       <el-header>
         <div>
-          黑马程序员：<strong>{{
+          大事件用户：<strong>{{
             userStore.user.nickname || userStore.user.username
           }}</strong>
         </div>

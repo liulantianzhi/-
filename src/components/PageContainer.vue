@@ -6,7 +6,7 @@ defineProps({
   }
 })
 </script>
-
+<!-- 公共组件————弹出的添加框 -->
 <template>
   <el-card class="page-container">
     <template #header>

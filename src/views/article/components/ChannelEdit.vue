@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 import { artEditChannelService, artAddChannelService } from '@/api/article.js'
+
+// 添加分类弹窗
+
 const dialogVisible = ref(false)
 const formRef = ref()
 const formModel = ref({
   cate_name: '',
-  cate_alias: ''
+  cate_alias: '',
 })
 const rules = {
   cate_name: [
@@ -13,17 +16,17 @@ const rules = {
     {
       pattern: /^\S{1,10}$/,
       message: '分类名必须是 1-10 位的非空字符',
-      trigger: 'blur'
-    }
+      trigger: 'blur',
+    },
   ],
   cate_alias: [
     { required: true, message: '请输入分类别名', trigger: 'blur' },
     {
       pattern: /^[a-zA-Z0-9]{1,15}$/,
       message: '分类名必须是 1-15 位的字母或数字',
-      trigger: 'blur'
-    }
-  ]
+      trigger: 'blur',
+    },
+  ],
 }
 
 const emit = defineEmits(['success'])
@@ -52,7 +55,7 @@ const open = (row) => {
 
 // 向外暴露方法
 defineExpose({
-  open
+  open,
 })
 </script>
 

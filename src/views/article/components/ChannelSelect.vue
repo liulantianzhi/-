@@ -2,13 +2,15 @@
 import { artGetChannelsService } from '@/api/article.js'
 import { ref } from 'vue'
 
+// 文章管理中的文章分类选择器渲染
+
 defineProps({
   modelValue: {
-    type: [Number, String]
+    type: [Number, String],
   },
   width: {
-    type: String
-  }
+    type: String,
+  },
 })
 const emit = defineEmits(['update:modelValue'])
 const channelList = ref([])

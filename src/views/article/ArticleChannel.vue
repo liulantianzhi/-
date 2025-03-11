@@ -7,6 +7,8 @@ const channelList = ref([])
 const loading = ref(false)
 const dialog = ref()
 
+// 文章分类
+
 const getChannelList = async () => {
   loading.value = true
   const res = await artGetChannelsService()
@@ -19,7 +21,7 @@ const onDelChannel = async (row) => {
   await ElMessageBox.confirm('你确认要删除该分类么', '温馨提示', {
     type: 'warning',
     confirmButtonText: '确认',
-    cancelButtonText: '取消'
+    cancelButtonText: '取消',
   })
   await artDelChannelService(row.id)
   ElMessage.success('删除成功')
@@ -38,6 +40,7 @@ const onSuccess = () => {
 
 <template>
   <page-container title="文章分类">
+    <!-- 具名插槽定制按钮 -->
     <template #extra>
       <el-button @click="onAddChannel">添加分类</el-button>
     </template>

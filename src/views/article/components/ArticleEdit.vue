@@ -7,10 +7,12 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import {
   artPublishService,
   artGetDetailService,
-  artEditService
+  artEditService,
 } from '@/api/article'
 import { baseURL } from '@/utils/request'
 import axios from 'axios'
+
+// 文章管理中的添加文章渲染
 // 控制抽屉显示隐藏
 const visibleDrawer = ref(false)
 
@@ -20,7 +22,7 @@ const defaultForm = {
   cate_id: '', // 分类id
   cover_img: '', // 封面图片 file 对象
   content: '', // string 内容
-  state: '' // 状态
+  state: '', // 状态
 }
 
 // 准备数据
@@ -101,12 +103,12 @@ async function imageUrlToFileObject(imageUrl, filename) {
 
     // 将下载的数据转换成 Blob 对象
     const blob = new Blob([response.data], {
-      type: response.headers['content-type']
+      type: response.headers['content-type'],
     })
 
     // 创建 File 对象
     const file = new File([blob], filename, {
-      type: response.headers['content-type']
+      type: response.headers['content-type'],
     })
 
     return file
@@ -117,7 +119,7 @@ async function imageUrlToFileObject(imageUrl, filename) {
 }
 
 defineExpose({
-  open
+  open,
 })
 </script>
 

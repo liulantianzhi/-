@@ -9,12 +9,14 @@ const articleList = ref([]) // 文章列表
 const total = ref(0) // 总条数
 const loading = ref(false) // loading状态
 
+// 文章管理
+
 // 定义请求参数对象
 const params = ref({
   pagenum: 1, // 当前页
   pagesize: 5, // 当前生效的每页条数
   cate_id: '',
-  state: ''
+  state: '',
 })
 
 // 基于params参数，获取文章列表
@@ -76,7 +78,7 @@ const onDeleteArticle = async (row) => {
   await ElMessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
-    type: 'warning'
+    type: 'warning',
   })
   await artDelService(row.id)
   ElMessage.success('删除成功')
@@ -109,9 +111,6 @@ const onSuccess = (type) => {
         <!-- Vue2 => v-model :value 和 @input 的简写 -->
         <!-- Vue3 => v-model :modelValue 和 @update:modelValue 的简写 -->
         <channel-select v-model="params.cate_id"></channel-select>
-
-        <!-- Vue3 => v-model:cid  :cid 和 @update:cid 的简写 -->
-        <!-- <channel-select v-model:cid="params.cate_id"></channel-select> -->
       </el-form-item>
       <el-form-item label="发布状态:">
         <!-- 这里后台标记发布状态，就是通过中文标记的，已发布 / 草稿 -->

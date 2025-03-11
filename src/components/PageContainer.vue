@@ -2,13 +2,14 @@
 defineProps({
   title: {
     required: true,
-    type: String
-  }
+    type: String,
+  },
 })
 </script>
 <!-- 公共组件————弹出的添加框 -->
 <template>
   <el-card class="page-container">
+    <!-- 头部 -->
     <template #header>
       <div class="header">
         <span>{{ title }}</span>
@@ -17,6 +18,7 @@ defineProps({
         </div>
       </div>
     </template>
+    <!-- 内容 -->
     <slot></slot>
   </el-card>
 </template>

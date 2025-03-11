@@ -11,7 +11,7 @@ const form = ref()
 const formModel = ref({
   username: '',
   password: '',
-  repassword: ''
+  repassword: '',
 })
 // 整个表单的校验规则
 // 1. 非空校验 required: true      message消息提示，  trigger触发校验的时机 blur change
@@ -27,22 +27,22 @@ const formModel = ref({
 const rules = {
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 5, max: 10, message: '用户名必须是 5-10位 的字符', trigger: 'blur' }
+    { min: 5, max: 10, message: '用户名必须是 5-10位 的字符', trigger: 'blur' },
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     {
       pattern: /^\S{6,15}$/,
       message: '密码必须是 6-15位 的非空字符',
-      trigger: 'blur'
-    }
+      trigger: 'blur',
+    },
   ],
   repassword: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     {
       pattern: /^\S{6,15}$/,
       message: '密码必须是 6-15位 的非空字符',
-      trigger: 'blur'
+      trigger: 'blur',
     },
     {
       validator: (rule, value, callback) => {
@@ -53,9 +53,9 @@ const rules = {
           callback() // 就算校验成功，也需要callback
         }
       },
-      trigger: 'blur'
-    }
-  ]
+      trigger: 'blur',
+    },
+  ],
 }
 
 const register = async () => {
@@ -66,6 +66,7 @@ const register = async () => {
   isRegister.value = false
 }
 
+// 登录
 const userStore = useUserStore()
 const router = useRouter()
 const login = async () => {
@@ -81,7 +82,7 @@ watch(isRegister, () => {
   formModel.value = {
     username: '',
     password: '',
-    repassword: ''
+    repassword: '',
   }
 })
 </script>
@@ -104,6 +105,7 @@ watch(isRegister, () => {
        (3) 表单元素 => v-model="ruleForm.xxx" 给表单元素，绑定form的子属性
        (4) el-form-item => prop配置生效的是哪个校验规则 (和rules中的字段要对应)
   -->
+  <!-- 登陆注册界面切换通过v-if判断 -->
   <el-row class="login-page">
     <el-col :span="12" class="bg"></el-col>
     <el-col :span="6" :offset="3" class="form">

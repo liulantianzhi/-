@@ -8,7 +8,7 @@ const formRef = ref()
 const pwdForm = ref({
   old_pwd: '',
   new_pwd: '',
-  re_pwd: ''
+  re_pwd: '',
 })
 
 const checkDifferent = (rule, value, callback) => {
@@ -30,18 +30,18 @@ const checkSameAsNewPwd = (rule, value, callback) => {
 const rules = ref({
   old_pwd: [
     { required: true, message: '请输入原密码', trigger: 'blur' },
-    { min: 6, max: 15, message: '原密码长度在6-15位之间', trigger: 'blur' }
+    { min: 6, max: 15, message: '原密码长度在6-15位之间', trigger: 'blur' },
   ],
   new_pwd: [
     { required: true, message: '请输入新密码', trigger: 'blur' },
     { min: 6, max: 15, message: '新密码长度在6-15位之间', trigger: 'blur' },
-    { validator: checkDifferent, trigger: 'blur' }
+    { validator: checkDifferent, trigger: 'blur' },
   ],
   re_pwd: [
     { required: true, message: '请再次输入新密码', trigger: 'blur' },
     { min: 6, max: 15, message: '确认密码长度在6-15位之间', trigger: 'blur' },
-    { validator: checkSameAsNewPwd, trigger: 'blur' }
-  ]
+    { validator: checkSameAsNewPwd, trigger: 'blur' },
+  ],
 })
 
 const userStore = useUserStore()
